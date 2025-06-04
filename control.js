@@ -373,7 +373,7 @@ shortURLLinkButton.addEventListener('click',async()=>{
 });
 
 //set sample url
-urlSelect.addEventListener('click',()=>{
+urlSelect.addEventListener('change',()=>{
     if(urlSelect.value == "test"){
         //set baseurl to test website url
         baseUrlInput.value = `${baseUrl}test.html`;
