@@ -47,7 +47,15 @@
                     <span id="clearSavedDatabutton" class="clearStorageButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Clear any Stored value" ><i class="bi bi-x-circle"></i></span>
                 </div>
                 <!--base url input-->
-                <input type="text" id="baseUrlInput"  class="form-control normal_input" placeholder="Enter Base URL .." aria-label="Username" aria-describedby="basic-addon1" data-bs-toggle="tooltip" data-bs-placement="top" title="Enter Base URL">
+                <div class="input-group mb-1">
+                    <input type="text" id="baseUrlInput"  class="form-control normal_input" placeholder="Enter Base URL .." aria-label="Username" aria-describedby="basic-addon1" data-bs-toggle="tooltip" data-bs-placement="top" title="Enter Base URL">
+                    <select class="normalSelect urlSelect" name="urlSelect" id="urlSelect">
+                        <option selected>Select</option>
+                        <option value="test" >Test</option>
+                        <option value="yt">Youtube (Fake)</option>
+                        <option value="clear">Clear URL</option>
+                    </select>
+                </div>
                 <br>
 
                 <!--show options-->
