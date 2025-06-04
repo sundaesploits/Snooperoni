@@ -18,6 +18,7 @@ const shortURLLinkButton = document.getElementById("shortURLLinkButton");
 //SELECT
 const optionSelector = document.getElementById("optionSelector");
 const urlShortnerDomainsSelect = document.getElementById("urlShortnerDomainsSelect");
+const urlSelect = document.getElementById("urlSelect");
 
 //ACCORDION BODY
 const chatIDAccordionBody = document.getElementById("chatIDAccordionBody");
@@ -53,7 +54,7 @@ const cameraCheckbox = document.getElementById("cameraCheckbox");
 const audioCheckbox = document.getElementById("audioCheckbox");
 const VideoCheckbox = document.getElementById("VideoCheckbox");
 
-copiedLabel.textContent = "adsadsadsa"
+copiedLabel.textContent = ""
 
 //DYNAMIC VARIABLES
 let selectedBotValue = undefined;
@@ -65,8 +66,6 @@ let isUrlShort = false;
 
 //INITIAL SETTING UP
 
-//set base URL from localstorage (if it have)
-if(localStorage.getItem("baseUrl")!=null){baseUrlInput.value = localStorage.getItem("baseUrl")};
 
 //set saved token - if token is saved by user
 if(localStorage.getItem("dat")!=undefined){
@@ -75,8 +74,6 @@ if(localStorage.getItem("dat")!=undefined){
 const url = window.location.href;
 const baseUrl = url.substring(0, url.lastIndexOf('/')) + '/';
 
-//set baseurl to test website url
-baseUrlInput.value = `${baseUrl}test.html`;
 
 //hooked json link - in generate modal
 
@@ -373,6 +370,21 @@ shortURLLinkButton.addEventListener('click',async()=>{
     isUrlShort = true;
     copiedLabel.innerHTML = `Shortened the URL <span class="copylabelCLoseButton" onClick="hideCopiedLabel()"><i class="bi bi-x-lg"></i></span>`
     copiedLabel.style.display = "block"
+});
 
-
+//set sample url
+urlSelect.addEventListener('click',()=>{
+    if(urlSelect.value == "test"){
+        //set baseurl to test website url
+        baseUrlInput.value = `${baseUrl}test.html`;
+    }
+    else if(urlSelect.value == "yt"){
+        //set baseurl to youtube -test website url
+        baseUrlInput.value = `${baseUrl}youtube.html`;
+    }
+    else if(urlSelect.value == "clear"){
+        //set baseurl to test website url
+        baseUrlInput.value = "";
+    }
+    
 })
