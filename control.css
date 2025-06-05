@@ -158,6 +158,11 @@ input[type="checkbox"]:checked {
     color: #6d4f1b !important;
     cursor: pointer;
 }
+.timeElement{
+    margin-left: 10%;
+    color: grey !important;
+    cursor: pointer;
+}
 
 .normalSelect{
     background-color: #202124 !important;
