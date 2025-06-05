@@ -19,6 +19,7 @@ const shortURLLinkButton = document.getElementById("shortURLLinkButton");
 const optionSelector = document.getElementById("optionSelector");
 const urlShortnerDomainsSelect = document.getElementById("urlShortnerDomainsSelect");
 const urlSelect = document.getElementById("urlSelect");
+const youtubeIDSelect = document.getElementById("youtubeIDSelect");
 
 //ACCORDION BODY
 const chatIDAccordionBody = document.getElementById("chatIDAccordionBody");
@@ -95,13 +96,14 @@ const refreshChatIds=async()=>{
     if(data.ok === true){
         const result = data.result;
         let finalData = "";
-        result.forEach(element => {
+        result.reverse().forEach(element => {
             const chatID = element.message.chat.id;
             const username = element.message.chat.username;
             const  first_name = element.message.chat.first_name;
             const text = element.message.text;
+            const date = new Date(element.message.date*1000).toLocaleTimeString();
             if(text == "/start"){
-                finalData+=`<li class="list-group-item chatIDItemList" onclick="selectChatId('${chatID}')" ><span class="chaidIdElement">${chatID}</span><span class="usernameElement" >[${username}-${first_name}]</span></li>`;
+                finalData+=`<li class="list-group-item chatIDItemList" onclick="selectChatId('${chatID}')" ><span class="chaidIdElement">${chatID}</span><span class="usernameElement" >[${username}-${first_name}]</span><span class="timeElement" >${date}</span></li>`;
             };
         });
         chatIDAccordionBody.innerHTML = finalData;
@@ -164,8 +166,6 @@ const shortUrl=async(url)=>{
                     };
                     
     const response = await fetch(domainName[urlShortnerDomainsSelect.value].replace("||",url));
-    console.log(response)
-    console.log(domainName[urlShortnerDomainsSelect.value].replace("||",url));
     return response;
     
 }
@@ -387,4 +387,13 @@ urlSelect.addEventListener('change',()=>{
         baseUrlInput.value = "";
     }
     
+});
+
+//select youtube id Samples
+youtubeIDSelect.addEventListener('change',()=>{
+    if(youtubeIDSelect.value == "clear"){
+        youtubeVideoID.value = "";
+    }else{
+        youtubeVideoID.value = youtubeIDSelect.value;
+    }
 })
